@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1 #{title} 
+  // Display the values of query.rows and query.cols
+  p The value of rows is #{query.rows} and the value of cols is #{query.cols}.
+
+  // Convert query.rows and query.cols to numbers
+  - let rows = Number(query.rows)
+  - let cols = Number(query.cols)
+
+  // Check if rows and cols are integers
+  if (!Number.isInteger(rows) || !Number.isInteger(cols))
+    p Rows and cols must be integers.
+
+  // Check if rows and cols are below 3 or above 13
+  if (rows < 3 || rows > 13 || cols < 3 || cols > 13)
+    p Number of rows and columns must be between 3 and 13.
+
+  // Otherwise, generate the table
+  - else
+    table#outer
+      - for(let i=0; i<rows; i++)
+        tr#middle
+          - for(let j=0; j<cols; j++)
+            td= computeCellValue(i, j)
+
+  script.
+    function computeCellValue(row, col) {
+      // Convert row and col to numbers
+      row = Number(row);
+      col = Number(col);
+
+      // Compute the value for the cell
+      return Math.min(row, col) + 1;
+    }
