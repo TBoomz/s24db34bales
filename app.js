@@ -21,10 +21,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+require('dotenv').config();
+const connectionString = process.env.MONGO_CON
+mongoose = require('mongoose');
+mongoose.connect(connectionString);
+
 app.use('/', indexRouter);
 app.use('/fossils', fossilsRouter);
 app.use('/grid', gridRouter);
 app.use('/users', usersRouter);
+
+var Costume = require("./models/fossil");
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
