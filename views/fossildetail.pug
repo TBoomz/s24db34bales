@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    if(toShow == null)
+        h2 No instance to show
+    else
+        h1=title 
+        - let fossilId = toShow._id
+        - let era = toShow.era
+        - let species = toShow.species
+        - let age = toShow.age
+        div
+            div.row
+                div(class='fossilAttr mr-3') Fossil ID is: 
+                div #{fossilId}
+            div.row
+                div(class='fossilAttr mr-3') Fossil era is: 
+                div #{era}
+            div.row
+                div(class='fossilAttr mr-3') Fossil species are: 
+                div #{species}
+            div.row
+                div(class='fossilAttr mr-3') Fossil age is: 
+                div #{age} 

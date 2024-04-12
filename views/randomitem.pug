@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  - var image_names = ["fossil1.jpg", "fossil2.jpg", "fossil3.jpg", "fossil4.jpg", "fossil5.jpg"]
+  - for(let i=0; i < 3; i++){
+      - var value = Math.floor(Math.random()*5)
+      - var imageSrc = image_names[value]
+        img(src="/images/" + imageSrc, alt="Image of fossil",height=300, width=300)
+  - }

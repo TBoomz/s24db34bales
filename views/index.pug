@@ -2,17 +2,17 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
-  a(href="/fossils") View Fossils
-  button(type="button", class="btn btn-primary", onclick="double()") Press Me
+  p This is the new change to the index
+  button(type="button", class="btn btn-secondary" onclick="double()") I am a button
   div(id="double") Up the amount
-
+  
   script.
-    var value = 0;
-    var power = 1;
-
-    function double() {
-      value += 1;
-      power *= 2;
-      document.getElementById('double').innerText = `Two to the power ${value} is ${power}`;
+    value = 0;
+    power = 1;
+    function double(){
+      value = value + 1;
+      power = power * 2;
+      document.getElementById("double").innerHTML = "Two to the power " + value + " is " + power
     }
+
+a(href='/fossil') https://s24db34bales.onrender.com/fossil

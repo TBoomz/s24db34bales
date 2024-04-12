@@ -1,0 +1,59 @@
+extends layout 
+
+block content 
+    h1=title 
+
+    style. 
+        body{
+            background-color: blue; 
+        }
+        h1{
+           font-family: "Times New Roman", Times, serif; 
+        }
+        input{
+            border: 5px solid light green;
+            border-radius: 5px;
+            font-family: "Times New Roman", Times, serif; 
+            font-size: 15px;
+        }
+        label{
+            font-family: "Times New Roman", Times, serif; 
+            font-size: 25px;
+            width: 500px;
+            display: inline-block;
+
+        }
+
+    form(id='FossilForm', action="/resource/fossils", method="POST")
+    div.form-group
+        label.fossilAttr(for='era') Era
+        input#era(type='text', name='era')
+    div.form-group
+        label.fossilAttr(for='species') Species
+        input#species(type='text', name='species')
+    div.form-group
+        label.fossilAttr(for='age') Age
+        input#age(type='number', name='age')
+    input(type="submit")
+
+    script.
+    document.forms['FossilForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO: Do something here to show the user that the form is being submitted
+
+        fetch(event.target.action, {
+            method: 'POST',
+            body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        })
+        .then((resp) => {
+            return resp.json(); // or resp.text() or whatever the server sends
+        })
+        .then((body) => {
+            alert("Save succeeded");
+            // TODO: Handle response body here
+        })
+        .catch((error) => {
+            alert("Save failed: " + error);
+            // TODO: Handle error here
+        });
+    });

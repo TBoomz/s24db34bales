@@ -1,0 +1,50 @@
+extends layout
+
+block content
+
+    if(toShow == null)
+        h2 No instance to update
+    else
+        h1=title
+        - let fossilId = toShow._id
+        - let era = toShow.era
+        - let species = toShow.species
+        - let age = toShow.age
+
+        div.row(class='mb-2')
+            div.mr-1 ID is
+            div #{fossilId}
+        - let actionId = "/resource/fossils/" + fossilId
+
+        form(id='FossilForm', action= actionId, method="PUT")
+            div.form-group
+                label.fossilAttr(for='era') Era
+                input#era(type='text', name='era', value= era) 
+            div.form-group
+                label.fossilAttr(for='species') Species
+                input#species(type='text', name='species', value= species)
+            div.form-group
+                label.fossilAttr(for='age') Age
+                input#age(type='number', name='age', value= age)
+            input(type="submit")
+
+    script.
+        document.forms['FossilForm'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            // TODO: Do something here to show user that form is being submitted
+            fetch(event.target.action, {
+                method: 'PUT',
+                body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+            })
+            .then((resp) => {
+                return resp.json(); // or resp.text() or whatever the server sends
+            })
+            .then((body) => {
+                alert("Update succeeded");
+                // TODO: Handle response body
+            })
+            .catch((error) => {
+                alert("Update failed: " + error);
+                // TODO: Handle error
+            });
+        });

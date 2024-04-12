@@ -1,0 +1,55 @@
+extends layout
+
+block content
+    h1=title
+
+    if(toShow == null)
+        h2 No instance to delete
+    else
+        - let fossilId = toShow._id
+        - let era = toShow.era
+        - let species = toShow.species
+        - let age = toShow.age
+        - let actionId = "/resource/fossils/" + fossilId
+        script.
+            let actionId = "#{actionId}";
+
+        div
+            div.row
+                div(class='fossilAttr mr-3') Fossil ID is:
+                div #{fossilId}
+            div.row
+                div(class='fossilAttr mr-3') Fossil era is:
+                div #{era}
+            div.row
+                div(class='fossilAttr mr-3') Fossil species are:
+                div #{species}
+            div.row
+                div(class='fossilAttr mr-3') Fossil age is:
+                div #{age}
+
+        button(class="btn btn-danger m-2" onclick="deleteOnId()") Delete
+        button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+
+    script.
+        function cancel(){
+            window.location.href = '/fossils';
+        }
+
+        function deleteOnId(){
+            console.log("Starting delete");
+            fetch(actionId, {
+                method: 'DELETE'
+            })
+            .then((resp) => {
+                return resp.json(); // or resp.text() or whatever the server sends
+            })
+            .then((body) => {
+                alert("Delete succeeded");
+                // TODO handle response body
+            })
+            .catch((error) => {
+                alert("Delete failed " + error);
+                // TODO handle error
+            });
+        }
