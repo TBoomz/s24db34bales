@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var Fossil = require("./models/fossil");
+  var Fossil = require("./models/fossil");
 
 require('dotenv').config();
 const connectionString = process.env.MONGO_CON
