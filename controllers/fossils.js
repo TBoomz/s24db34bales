@@ -1,5 +1,5 @@
-const Fossil = require('../models/fossil'); // Assuming Fossil model is defined in ../models/fossil.js
-
+const { ExplainVerbosity } = require('mongodb');
+var Fossil = require('../models/fossil'); 
 exports.fossil_list = async function(req, res) {
     try {
         const fossils = await Fossil.find();
