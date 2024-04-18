@@ -40,7 +40,7 @@ exports.fossil_create_post = async function(req, res) {
 
 };
 
-xports.fossil_delete = async function(req,res){
+exports.fossil_delete = async function(req,res){
     console.log("delete" + req.params.id)
     try{
         result = await Fossil.findByIdAndDelete(req.params.id)

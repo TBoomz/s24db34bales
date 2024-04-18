@@ -111,7 +111,7 @@ async function recreateDB(){
     });
 
   let instance2 = new
-  Fossil({ era: "Cretaceous", species:"Triceratops", age:70000000 });
+  Fossil({ era:"Cretaceous", species:"Triceratops", age:70000000 });
     instance2.save().then(doc=>{
     console.log("Second object saved")}).catch(err=>{
     console.error(err)
