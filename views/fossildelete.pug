@@ -11,8 +11,7 @@ block content
         - let species = toShow.species
         - let age = toShow.age
         - let actionId = "/resource/fossils/" + fossilId
-        script.
-            let actionId = "#{actionId}";
+        script let actionId = "#{actionId}"
 
         div
             div.row
@@ -31,25 +30,22 @@ block content
         button(class="btn btn-danger m-2" onclick="deleteOnId()") Delete
         button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
 
-    script.
+    script. 
         function cancel(){
-            window.location.href = '/fossils';
+            window.location.href='/fossil'
         }
-
-        function deleteOnId(){
-            console.log("Starting delete");
-            fetch(actionId, {
-                method: 'DELETE'
-            })
-            .then((resp) => {
+    script. 
+        function deleteOnid(){
+            console.log("starting delete")
+            fetch(actionid, {
+                method:'DELETE'
+            }).then((resp) => {
                 return resp.json(); // or resp.text() or whatever the server sends
-            })
-            .then((body) => {
-                alert("Delete succeeded");
-                // TODO handle response body
-            })
-            .catch((error) => {
-                alert("Delete failed " + error);
+            }).then((body) => {
+                alert("Delete succeded")
+                // TODO handle body
+            }).catch((error) => {
                 // TODO handle error
+                alert("Delete failed " + error )
             });
         }
