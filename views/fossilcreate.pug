@@ -41,20 +41,17 @@ block content
     script.
         document.forms['FossilForm'].addEventListener('submit', (event) => {
             event.preventDefault();
-            // TODO: Do something here to show the user that the form is being submitted
+            // TODO do something here to show user that form is being submitted
             fetch(event.target.action, {
                 method: 'POST',
                 body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-            })
-            .then((resp) => {
+            }).then((resp) => {
                 return resp.json(); // or resp.text() or whatever the server sends
-            })
-            .then((body) => {
-                alert("Save succeeded");
-                // TODO: Handle response body here
-            })
-            .catch((error) => {
-                alert("Save failed: " + error);
-                // TODO: Handle error here
+            }).then((body) => {
+                alert("Save succeded")
+                // TODO handle body
+            }).catch((error) => {
+                // TODO handle error
+                alert("Save failed " + error )
             });
         });

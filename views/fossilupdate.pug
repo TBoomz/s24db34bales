@@ -6,17 +6,17 @@ block content
         h2 No instance to update
     else
         h1=title
-        - let fossilId = toShow._id
+        - let fossilid = toShow._id
         - let era = toShow.era
         - let species = toShow.species
         - let age = toShow.age
 
         div.row(class='mb-2')
             div.mr-1 ID is
-            div #{fossilId}
-        - let actionId = "/resource/fossils/" + fossilId
+            div #{fossilid}
+        - let actionid = "/resource/fossils/" + fossilid
 
-        form(id='FossilForm', action= actionId, method="PUT")
+        form(id='FossilForm', action= actionid, method="PUT")
             div.form-group
                 label.fossilAttr(for='era') Era
                 input#era(type='text', name='era', value= era) 
