@@ -104,27 +104,27 @@ async function recreateDB(){
   await Fossil.deleteMany();
 
   let instance1 = new
-  Fossil({ era: "Jurassic", species: "Tyrannosaurus rex", age: 150000000 });
-  instance1.save().then(doc => {
-      console.log("First fossil saved");}).catch(err => {
-      console.error(err);
-      });
+  Fossil({era:"Jurassic", species:"Tyrannosaurus rex", age:150000000 });
+    instance1.save().then(doc=>{
+    console.log("First object saved")}).catch(err=>{
+    console.error(err)
+    });
 
   let instance2 = new
-  Fossil({ era: "Cretaceous", species: "Triceratops", age: 70000000 });
-  instance2.save().then(doc => {
-    console.log("Second fossil saved");}).catch(err => {
-    console.error(err);
+  Fossil({ era: "Cretaceous", species:"Triceratops", age:70000000 });
+    instance2.save().then(doc=>{
+    console.log("Second object saved")}).catch(err=>{
+    console.error(err)
     });
 
   let instance3= new
-  Fossil({ era: "Triassic", species: "Stegosaurus", age: 200000000 });
-  instance3.save().then(doc => {
-    console.log("Third fossil saved");}).catch(err => {
-    console.error(err);
+  Fossil({ era:"Triassic", species:"Stegosaurus", age:200000000 });
+    instance3.save().then(doc=>{
+    console.log("Third object saved")}).catch(err=>{
+    console.error(err)
     });
 }
-let reseed = false;
+let reseed = true;
 if (reseed){
   recreateDB();
 }
