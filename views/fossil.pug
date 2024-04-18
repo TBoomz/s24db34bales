@@ -3,15 +3,21 @@ extends layout
 block content
   h1= title
   -let items = results
+  div 
+    button.btn(class="btn-primary m1-1", onclick=`dispatch(\"/fossil/create\")`) Create 
+
   div(class="container-fluid")
     div(class="row m-1")
       each item in items
         - let destination = `dispatch(\"/fossil/update?id=${item._id}\")`
         div(class="row-sm-2", class="m-1") Item #{item.era}(#{item.sepecies}) is #{item.age}
-        button.btn(class="btn-primary m1-1", onclick=destination) Update 
+          button.btn(class="btn-primary m1-1", onclick=destination) Update 
+          button.btn(class="btn-primary m-1", onclick=`dispatch(\"/fossil/detail?id=${item._id}\")`) Detail 
+          button.btn(class="btn-primary m-1", onclick=`dispatch(\"/fossil/delete?id=${item._id}\")`) Delete 
 
 
   script. 
     function dispatch(path){
       window.location.href=path
     }
+
