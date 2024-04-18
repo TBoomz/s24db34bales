@@ -6,17 +6,17 @@ block content
     if(toShow == null)
         h2 No instance to delete
     else
-        - let fossilId = toShow._id
+        - let fossilid = toShow._id
         - let era = toShow.era
         - let species = toShow.species
         - let age = toShow.age
-        - let actionId = "/resource/fossils/" + fossilId
-        script let actionId = "#{actionId}"
+        - let actionid = "/resource/fossils/" + fossilId
+        script let actionid = "#{actionId}"
 
         div
             div.row
                 div(class='fossilAttr mr-3') Fossil ID is:
-                div #{fossilId}
+                div #{fossilid}
             div.row
                 div(class='fossilAttr mr-3') Fossil era is:
                 div #{era}
@@ -27,7 +27,7 @@ block content
                 div(class='fossilAttr mr-3') Fossil age is:
                 div #{age}
 
-        button(class="btn btn-danger m-2" onclick="deleteOnId()") Delete
+        button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
         button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
 
     script. 

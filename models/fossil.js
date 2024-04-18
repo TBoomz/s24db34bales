@@ -9,7 +9,7 @@ const fossilSchema = mongoose.Schema({
         type: Number,
         min: 10000,
         max: 1000000000   
-    } 
+    }
         
 })
 module.exports = mongoose.model("Fossil", fossilSchema)
