@@ -1,5 +1,5 @@
 var express = require('express');
-const pizza_controller = require('../controllers/fossils');
+const fossil_controller = require('../controllers/fossils');
 var router = express.Router();
 
 const secured = (req,res,next)=>{
