@@ -1,8 +1,5 @@
 var createError = require('http-errors');
 var express = require('express');
-var app = express();
-var Fossil = require("./models/fossil");
-app.get('./models/fossil', Fossil.FossilRouter);
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
