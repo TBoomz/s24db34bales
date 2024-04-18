@@ -1,7 +1,16 @@
 const mongoose = require("mongoose")
 const fossilSchema = mongoose.Schema({
-    era: String,
+    era:{
+        type: String,
+        minLength: 5
+    },
+
     species: String,
-    age: Number
+    age:{
+        type: Number,
+        min: 10000,
+        max: 1000000000   
+    } 
+        
 })
 module.exports = mongoose.model("Fossil", fossilSchema)
