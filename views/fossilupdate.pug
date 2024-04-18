@@ -14,7 +14,7 @@ block content
         div.row(class='mb-2')
             div.mr-1 ID is
             div #{fossilId}
-        - let actionId = "/resource/fossils/" + fossilId
+        - let actionId = "/resource/fossil/" + fossilId
 
         form(id='FossilForm', action= actionId, method="PUT")
             div.form-group
