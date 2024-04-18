@@ -1,5 +1,6 @@
 const { ExplainVerbosity } = require('mongodb');
 var Fossil = require('../models/fossil'); 
+
 exports.fossil_list = async function(req,res){
     try{
         theFossils = await Fossil.find();
@@ -55,7 +56,7 @@ exports.fossil_delete = async function(req,res){
 exports.fossil_update_put = async function(req, res){
     console.log(`Updated on id ${req.params.id} with body ${JSON.stringify(req.body)}`);
     try{
-        let toUpdate = await Fossil.findById(req.params.id);
+        let toUpdate = await Fossil.findById(req.params.id)
         if(req.body.era)
             toUpdate.era = req.body.era;
         if(req.body.species)
@@ -86,7 +87,7 @@ exports.fossil_view_one_Page = async function(req, res){
     console.log("Single view for id" + req.query.id)
     try{
         result = await Fossil.findById(req.query.id)
-        res.render('fossildetail', { title:'Fossil Detail',toShow:result});
+        res.render('fossildetail', {title:'Fossil Detail',toShow:result});
     }
     catch(err){
         res.status(500)

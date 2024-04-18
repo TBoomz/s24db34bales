@@ -4,7 +4,6 @@ const fossilSchema = mongoose.Schema({
         type: String,
         minLength: 5
     },
-
     species: String,
     age:{
         type: Number,
